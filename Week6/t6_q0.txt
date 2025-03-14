@@ -1,0 +1,16 @@
+.open wine.db
+
+.mode column
+
+SELECT 
+    grape_id, grape_name, wine_id, wine_name, winery_name
+FROM
+    grape
+LEFT JOIN contains
+    ON grape.grape_id = contains.grape_id
+LEFT JOIN wine
+    ON wine.wine_id = contains.wine_id
+LEFT JOIN winery
+    ON winery.winery_id = wine.winery_id
+WHERE
+    color = 'Blue';
